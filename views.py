@@ -24,7 +24,7 @@ def stock():
 
 
 @app.route('/hrecord', methods =["GET", "POST"])
-def hrecord():
+def hrecord(): #In Use, Daily Balance, New Stock
 
     if request.method == "POST":
         en_opmod = request.form['OP_mode']
@@ -32,11 +32,14 @@ def hrecord():
 
         already_ids = check_if_exits(hot_sell_daily_record, en_opmod, en_date)
 
-        if already_ids == []:
+        if (en_opmod=="Daily Balance" or en_opmod=="New Stock") and already_ids!=[] :
+            flash("ERROR: "+en_opmod+ " entry of "+ str(en_date) +" is already provided!")  
+        else:    
             entry_data = []
             entry_dict = {}
 
             price_dict = {"tsell":0, 'p_mrp':0, 'p_actual':0}
+
 
             for item_name in og_hdrinks:
                 try:
@@ -46,32 +49,58 @@ def hrecord():
                 entry_data.append(value)
                 entry_dict[item_name] = value
 
-                if en_opmod == "Daily Sell":
-                    if item_name in price_data["hot_drinks"]:
-                        try:
-                            price_dict["tsell"] += value * price_data["hot_drinks"][item_name][2]
-                            price_dict["p_mrp"] += value * ( price_data["hot_drinks"][item_name][2] - price_data["hot_drinks"][item_name][1] )
-                            price_dict["p_actual"] += value * ( price_data["hot_drinks"][item_name][2] - price_data["hot_drinks"][item_name][0] )
-                        except:
-                            pass
             remark = request.form['Remark']
 
-            sell_record = hot_sell_daily_record( en_opmod, en_date, entry_data,   remark, price_dict["tsell"], price_dict["p_mrp"] , price_dict["p_actual"] )
-            db.session.add( sell_record )
-            db.session.commit()
+            if en_opmod == "Daily Balance":
+                hstock, htitle = get_stock(hot_stock)
+                up_respose = True
+                day_sells = []
 
-            if en_opmod == "Daily Sell":
-                pass
+                for i, item_name in enumerate(og_hdrinks):
+                    sell_val = hstock[1][i+1] - entry_data[i]
+                    if  sell_val < 0:
+                        up_respose = False  
+                        break
+                    day_sells.append(sell_val)
+
+                    try:
+                        price_dict["tsell"] += sell_val * price_data["hot_drinks"][item_name][2]
+                        price_dict["p_mrp"] += sell_val * ( price_data["hot_drinks"][item_name][2] - price_data["hot_drinks"][item_name][1] )
+                        price_dict["p_actual"] += sell_val * ( price_data["hot_drinks"][item_name][2] - price_data["hot_drinks"][item_name][0] )
+                    except:
+                        pass
+
+
+                if up_respose:
+                    en_opmod = "Daily Sell"
+                    entry_data = day_sells
+                    up_respose = update_hot_stock(db, hot_stock, 'In Use', entry_dict, 'set')
+
+
+
+
             elif en_opmod == "New Stock":
-                update_hot_stock(db, hot_stock, 'stock', entry_dict, 'add')
+                up_respose = update_hot_stock(db, hot_stock, 'New Stock', entry_dict, 'add')
+            elif en_opmod == "In Use":
+                up_respose = update_hot_stock(db, hot_stock, 'New Stock', entry_dict, 'sub')
+                if up_respose:
+                    up_respose = update_hot_stock(db, hot_stock, 'In Use', entry_dict, 'add')
 
-            flash(en_opmod+ " entry of "+ str(en_date) +" is added!")  
-        else:
-            flash("ERROR: "+en_opmod+ " entry of "+ str(en_date) +" is already provided!")  
+            if up_respose: 
+                sell_record = hot_sell_daily_record( en_opmod, en_date, entry_data, remark, price_dict["tsell"], price_dict["p_mrp"] , price_dict["p_actual"] )
+                db.session.add( sell_record )
+                db.session.commit()
+                
+                flash(en_opmod+ " entry of "+ str(en_date) +" is added!") 
+            else:
+                flash("ERROR: "+en_opmod+ " entry of "+ str(en_date) +" is not added!")  
 
+
+    hstock, htitle = get_stock(hot_stock)
     return render_template('h_record.html',
                 len=len,
-                og_hdrinks=og_hdrinks, r_hdrinks=r_hdrinks)
+                og_hdrinks=og_hdrinks, r_hdrinks=r_hdrinks,
+                hstock=hstock)
 
 
 @app.route('/export', methods =["GET", "POST"])

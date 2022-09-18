@@ -26,3 +26,11 @@ body{
 input[type='date']{
     min-width: fit-content;
 }
+
+.blue_clr{
+    color:blue;
+}
+
+.orange_clr{
+    color:orange;
+}

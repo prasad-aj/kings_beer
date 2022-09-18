@@ -32,7 +32,7 @@ def export_to_excel(hot_data, htitle):
         for col_num, cell_data in enumerate(row_data) :
             if col_num == 2:
                 sheet1.write(row_num, col_num, cell_data, date_format)
-            elif col_num in [29, 30, 31]:
+            elif col_num in [31, 32, 33]:
                 sheet1.write(row_num, col_num, cell_data, style=styles['sum'])
             else:
                 sheet1.write(row_num, col_num, cell_data, style=styles['regular'])

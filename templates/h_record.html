@@ -10,10 +10,12 @@
                         <tbody>
                             <tr>
                                 <td><label for="OP_mode" class="col-sm-2  col-form-label">Mode</label></td>
-                                <td><select class="form-control" name="OP_mode">
-                                        <option>Daily Sell</option>
-                                        <option>New Stock</option>
-                                    </select></td>
+                                <td><select class="form-control" name="OP_mode" required>
+                                        <option disabled selected hidden></option>
+                                        <option value="In Use">Add In Use</option>
+                                        <option value="Daily Balance">Add Daily Balance</option>
+                                        <option value="New Stock">Add New Stock</option>
+                                </select></td>
                             </tr>
                         </tbody>
                     </table>
@@ -192,8 +194,10 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">Drinks</th>
+                        <th scope="col">In Stock</th>
+                        <th scope="col">In Use</th>
+                        <th scope="col">Entry</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -201,6 +205,8 @@
                         <tr>
                             <th scope="row">{{i+1}}</th>
                             <th >{{r_hdrinks[i]}}</th>
+                            <td class="blue_clr">{{hstock[0][i+1]}}</td>
+                            <td class="orange_clr">{{hstock[1][i+1]}}</td>
                             <td><input type="number" class="form-control item_inc" name="{{og_hdrinks[i]}}"></td>
                         </tr>
                     {%endfor%}
