@@ -1,0 +1,28 @@
+
+body{
+    font-size: 1.6rem;
+}
+
+.app_name{
+    font-size:2rem;
+}
+
+.item_label{
+    min-width: max-content;
+}
+
+.item_inc{
+    width: 100px;
+}
+
+.warning{
+    color:red;
+}
+
+.success{
+    color:green;
+}
+
+input[type='date']{
+    min-width: fit-content;
+}

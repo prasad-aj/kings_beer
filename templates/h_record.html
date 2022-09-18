@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <form method="post">
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="OP_mode" class="col-sm-2  col-form-label">Mode</label></td>
+                                <td><select class="form-control" name="OP_mode">
+                                        <option>Daily Sell</option>
+                                        <option>New Stock</option>
+                                    </select></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="Date" class="col-sm-2  col-form-label">Date</label></td>
+                                <td><input type="date" class="form-control" name="Date" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr>
+
+
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="Blenders_Pride" class="col-sm-2  col-form-label item_label">Blenders
+                                        Pride</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Blenders_Pride"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Breezer" class="col-sm-2  col-form-label item_label">Breezer</label>
+                                </td>
+                                <td><input type="number" class="form-control item_inc" name="Breezer"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="DSP_Balck_180" class="col-sm-2  col-form-label item_label">DSP Balck
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="DSP_Balck_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="DSP_Balck_90" class="col-sm-2  col-form-label item_label">DSP Balck
+                                        90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="DSP_Balck_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="IB_180" class="col-sm-2  col-form-label item_label">IB 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="IB_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="IB_90" class="col-sm-2  col-form-label item_label">IB 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="IB_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Mcd_Rum_180" class="col-sm-2  col-form-label item_label">Mcd Rum
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Mcd_Rum_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Mcd_Rum_90" class="col-sm-2  col-form-label item_label">Mcd Rum
+                                        90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Mcd_Rum_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="MCDowells_180" class="col-sm-2  col-form-label item_label">MCDowells
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="MCDowells_180"></td>
+                            </tr>
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="MCDowells_90" class="col-sm-2  col-form-label item_label">MCDowells
+                                        90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="MCDowells_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Oak_Smith_Gold_180" class="col-sm-2  col-form-label item_label">Oak
+                                        Smith_Gold 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Oak_Smith_Gold_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Oak_Smith_Gold_90" class="col-sm-2  col-form-label item_label">Oak Smith
+                                        Gold 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Oak_Smith_Gold_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Oak_Smith_Silver_180" class="col-sm-2  col-form-label item_label">Oak
+                                        Smith Silver 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Oak_Smith_Silver_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Oak_Smith_Silver_90" class="col-sm-2  col-form-label item_label">Oak
+                                        Smith Silver 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Oak_Smith_Silver_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="OC_180" class="col-sm-2  col-form-label item_label">OC 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="OC_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="OC_90" class="col-sm-2  col-form-label item_label">OC 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="OC_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Old_Monk_180" class="col-sm-2  col-form-label item_label">Old Monk
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Old_Monk_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Old_Monk_90" class="col-sm-2  col-form-label item_label">Old Monk
+                                        90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Old_Monk_90"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="RC_180" class="col-sm-2  col-form-label item_label">RC 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="RC_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="RC_90" class="col-sm-2  col-form-label item_label">RC 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="RC_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Royal_Stag_180" class="col-sm-2  col-form-label item_label">Royal Stag
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Royal_Stag_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Royal_Stag_90" class="col-sm-2  col-form-label item_label">Royal Stag
+                                        90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Royal_Stag_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Royal_Stag_Barel_180" class="col-sm-2  col-form-label item_label">Royal
+                                        Stag Barel 180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Royal_Stag_Barel_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Royal_Stag_Barel_90" class="col-sm-2  col-form-label item_label">Royal
+                                        Stag Barel 90</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Royal_Stag_Barel_90"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="Signature_180" class="col-sm-2  col-form-label item_label">Signature
+                                        180</label></td>
+                                <td><input type="number" class="form-control item_inc" name="Signature_180"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="other1" class="col-sm-2  col-form-label item_label">Other 1</label></td>
+                                <td><input type="number" class="form-control item_inc" name="other1"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="other2" class="col-sm-2  col-form-label item_label">Other 2</label></td>
+                                <td><input type="number" class="form-control item_inc" name="other2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group row">
+                <label for="Remark" class="col-2  item_label">Remark</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" name="Remark" placeholder="Any Note...">
+                </div>
+            </div>
+
+
+            <input type="submit" class="btn btn-success" value="Submit">
+        </form>
+    </div>
+
+{% endblock %}
