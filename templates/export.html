@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+
+        <div class="form-group row">
+
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="SDate" class="col-sm-2  col-form-label item_label">Start Date</label></td>
+                            <td><input type="date" class="form-control" name="SDate" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="EDate" class="col-sm-2  col-form-label item_label">End Date</label></td>
+                            <td><input type="date" class="form-control" name="EDate" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="OP_mode" class="col-sm-2  col-form-label">Mode</label></td>
+                            <td><select class="form-control" name="OP_mode">
+                                    <option>All</option>
+                                    <option>Daily Sell</option>
+                                    <option>New Stock</option>
+                                </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <input type="submit" value="Export">
+    </form>
+</div>
+
+{% endblock %}

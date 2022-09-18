@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome</h1>
+
+    <br>
+    <br>
+    <table class="table">
+        <tbody>
+          <tr>
+            <td>Entry</td>
+            <td><a class="btn btn-info" href="# ">Beers</a></td>
+            <td><a class="btn btn-success" href="/hrecord">Hot drinks</a></td>
+          </tr>
+          <tr>
+            <td>Stock</td>
+            <td><a class="btn btn-outline-info" href="#">Beers</a></td>
+            <td><a class="btn btn-outline-success" href="/stock">Hot drinks</a></td>
+          </tr>
+          <tr>
+            <td><a class="btn btn-primary" href="/export">Export</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+</div>
+
+{% endblock %}
