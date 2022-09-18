@@ -11,9 +11,9 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href=".">
-            <img src="{{url_for('static', filename='img/beer.png')}}" width="30" height="30" class="d-inline-block align-top" alt="">
-            DrinkUp
+        <a class="navbar-brand app_name" href=".">
+            <img src="{{url_for('static', filename='img/beer.png')}}" width="50" height="50" class="d-inline-block align-top" alt="">
+            King's Beer
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -38,6 +38,18 @@
                         <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Stock
+                    </a>
+                    <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/stock">Beers</a>
+                        <a class="dropdown-item" href="/stock">Hots</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/export">Export</a>
                 </li>
@@ -55,7 +67,11 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         {% for message in messages %}
-        <p>{{ message }}</p>
+            {% if message.startswith("ERROR:") %}
+                <p class="warning">{{ message }}</p>
+            {% else %}
+                <p class="success">{{ message }}</p>
+            {% endif %}
         {% endfor %}
         {% endif %}
         {% endwith %}
