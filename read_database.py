@@ -22,6 +22,12 @@ def get_hot_data(en_opmod, sdate, edate):
     return out_data, titles
 
 
+def get_column_titles(table_obj):
+    og_titles = [ title for title in table_obj.__table__.columns.keys() ][3:-4]
+    titles = [ title.replace("_", " ") for title in og_titles ]
+
+    return og_titles, titles
+
 def get_stock(table_obj):
     og_titles = [ title for title in table_obj.__table__.columns.keys() ][1:]
     titles = [ title.replace("_", " ") for title in og_titles ]

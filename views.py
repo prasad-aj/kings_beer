@@ -2,11 +2,13 @@
 from flask import redirect, url_for, request, render_template, flash, send_file
 from app import app
 from utilities import export_to_excel, get_price_info
-from read_database import get_hot_data, check_if_exits, get_stock, update_hot_stock
+from read_database import get_hot_data, check_if_exits, get_stock, update_hot_stock, get_column_titles
 from models import db, hot_sell_daily_record, hot_stock
 import datetime
 
 price_data = get_price_info()
+og_hdrinks, r_hdrinks = get_column_titles(hot_sell_daily_record)
+
 
 @app.route('/')
 def index():
@@ -15,8 +17,7 @@ def index():
 @app.route('/stock')
 def stock():
     hstock, htitle = get_stock(hot_stock)
-    print(htitle)
-    print(hstock)
+
     return render_template('stock.html',
         len=len,
         htitle=htitle, hstock=hstock   )
@@ -37,7 +38,7 @@ def hrecord():
 
             price_dict = {"tsell":0, 'p_mrp':0, 'p_actual':0}
 
-            for item_name in ["Blenders_Pride", "Breezer", "DSP_Balck_180", "DSP_Balck_90", "IB_180", "IB_90", "Mcd_Rum_180", "Mcd_Rum_90", "MCDowells_180", "MCDowells_90", "Oak_Smith_Gold_180", "Oak_Smith_Gold_90", "Oak_Smith_Silver_180", "Oak_Smith_Silver_90", "OC_180", "OC_90", "Old_Monk_180", "Old_Monk_90", "RC_180", "RC_90", "Royal_Stag_180", "Royal_Stag_90", "Royal_Stag_Barel_180", "Royal_Stag_Barel_90", "Signature_180", "other1", "other2"]:
+            for item_name in og_hdrinks:
                 try:
                     value = int(request.form[item_name])
                 except:
@@ -68,7 +69,9 @@ def hrecord():
         else:
             flash("ERROR: "+en_opmod+ " entry of "+ str(en_date) +" is already provided!")  
 
-    return render_template('h_record.html')
+    return render_template('h_record.html',
+                len=len,
+                og_hdrinks=og_hdrinks, r_hdrinks=r_hdrinks)
 
 
 @app.route('/export', methods =["GET", "POST"])
