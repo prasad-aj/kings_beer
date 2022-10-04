@@ -1,0 +1,4 @@
+
+Create a database with heroku -
+heroku addons:create heroku-postgresql:hobby-dev --app kingsbeer
+heroku config --app kingsbeer

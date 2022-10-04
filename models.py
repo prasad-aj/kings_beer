@@ -144,6 +144,6 @@ class hot_stock(db.Model):
         self.total  = total
 
 
-db.create_all()
+#db.create_all()
 
 

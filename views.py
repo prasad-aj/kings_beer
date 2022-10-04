@@ -127,9 +127,10 @@ def export():
     return render_template('export.html')
 
 
-@app.route('/create_default')
+@app.route('/create_db')
 def declare_database():
 
+    db.create_all()
     for op_mode in ['Stock', 'In Use', 'Total']:
         entry = hot_stock(op_mode, 0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         db.session.add( entry )
